@@ -3,12 +3,12 @@ package com.projectx.utils;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class MediaSizeValidator implements ConstraintValidator<MediaSize, String[]> {
+public class MediaLinksLimitValidator implements ConstraintValidator<MediaLinksLimit, String[]> {
 
     private int max;
 
     @Override
-    public void initialize(MediaSize constraintAnnotation) {
+    public void initialize(MediaLinksLimit constraintAnnotation) {
         this.max = constraintAnnotation.max();
     }
 

@@ -10,10 +10,10 @@ import java.lang.annotation.Target;
 
 //This is a custom annotation, used in Post class for storing and validation of media links
 
-@Constraint(validatedBy = MediaSizeValidator.class)
+@Constraint(validatedBy = MediaLinksLimitValidator.class)
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MediaSize {
+public @interface MediaLinksLimit {
     String message() default "The number of media links must not exceed {max}";
     int max() default 10;
     Class<?>[] groups() default {};
