@@ -1,8 +1,9 @@
 import { AuthProvider } from "@/lib/context/auth-context";
-import "@/styles/globals.css";
+import "@/styles/globals.scss";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import { ReactElement, ReactNode } from "react";
+import { ThemeProvider } from "@/components/common/theme-provider";
 
 
 type NextPageWithLayout = NextPage & {
@@ -15,5 +16,16 @@ type AppPropsWithLayout = AppProps & {
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page): ReactNode => page);
-  return <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>;
+  return (
+    <AuthProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </AuthProvider>
+  );
 }
