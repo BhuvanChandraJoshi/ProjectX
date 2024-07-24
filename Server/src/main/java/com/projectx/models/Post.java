@@ -9,7 +9,7 @@ import jakarta.persistence.Index;
 import jakarta.persistence.Convert;
 import jakarta.validation.constraints.NotNull;
 import com.projectx.utils.StringArrayConverter;
-import com.projectx.utils.MediaSize;
+import com.projectx.utils.MediaLinksLimit;
 import java.util.UUID;
 
 @Entity
@@ -29,9 +29,9 @@ public class Post {
     private String caption;
     private String description;
 
-    @Column(name = "media", columnDefinition = "TEXT")
+    @Column(name = "media_links", columnDefinition = "TEXT")
     @Convert(converter = StringArrayConverter.class)
-    @MediaSize(max = 10) // Custom validation annotation
+    @MediaLinksLimit(max = 10) // Custom validation annotation
     private String[] media;
 
     @PrePersist

@@ -1,4 +1,4 @@
 package com.projectx.dto;
 
-public class SIgnupRequest {
+public class SignupRequest {
 }
