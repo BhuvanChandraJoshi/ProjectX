@@ -12,8 +12,12 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
 
+    UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {

@@ -13,8 +13,12 @@ import java.util.Optional;
 @RequestMapping("/posts")
 public class PostController {
 
-    @Autowired
     private PostService postService;
+
+    @Autowired
+    public PostController(PostService postService){
+        this.postService = postService;
+    }
 
     @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
