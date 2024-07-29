@@ -20,7 +20,13 @@ public class PostController {
         this.postService = postService;
     }
 
-    @PostMapping
+    @GetMapping
+    public ResponseEntity<List<Post>> getAllPosts(){
+        List<Post> posts = postService.getAllPosts();
+        return ResponseEntity.ok(posts);
+    }
+
+    @PostMapping("/new")
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         Post createdPost = postService.savePost(post);
         return ResponseEntity.ok(createdPost);
