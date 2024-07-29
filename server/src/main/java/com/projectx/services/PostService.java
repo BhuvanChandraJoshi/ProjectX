@@ -11,8 +11,16 @@ import java.util.Optional;
 @Service
 public class PostService {
 
+    PostRepository postRepository;
+
     @Autowired
-    private PostRepository postRepository;
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+
+    public List<Post> getAllPosts(){
+        return postRepository.findAll();
+    }
 
     public Post savePost(Post post) {
         return postRepository.save(post);

@@ -13,10 +13,20 @@ import java.util.Optional;
 @RequestMapping("/posts")
 public class PostController {
 
-    @Autowired
     private PostService postService;
 
-    @PostMapping
+    @Autowired
+    public PostController(PostService postService){
+        this.postService = postService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Post>> getAllPosts(){
+        List<Post> posts = postService.getAllPosts();
+        return ResponseEntity.ok(posts);
+    }
+
+    @PostMapping("/new")
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         Post createdPost = postService.savePost(post);
         return ResponseEntity.ok(createdPost);

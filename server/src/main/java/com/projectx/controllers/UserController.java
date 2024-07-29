@@ -12,10 +12,14 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    UserService userService;
 
-    @PostMapping
+    @Autowired
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
+
+    @PostMapping("/new")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User createdUser = userService.saveUser(user);
         return ResponseEntity.ok(createdUser);
